@@ -49,6 +49,6 @@ public class Semaphore {
 
     public synchronized void V() {
         value++;
-        notifyAll();
+        notify();
     }
 }
