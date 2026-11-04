@@ -40,7 +40,7 @@ public class Hospital {
 
         for (int i = 0; i < patientsCount; i++) {
             patients[i] = new Patient(i + 1, waitingRoom);
-            System.out.print("P" + i + " ");
+            System.out.print("P" + (i + 1) + " ");
         }
 
         System.out.print("\n");

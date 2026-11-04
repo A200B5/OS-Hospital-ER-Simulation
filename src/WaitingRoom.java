@@ -19,7 +19,7 @@ public class WaitingRoom {
 
         if (!spaces.tryP(0)) {
             if (patient != null)
-                System.out.println("Waiting room is full. Patient " + patient + " must wait outside");
+                System.out.println("Waiting room is full.\n" + patient + "is waiting outside for an available seat.");
 
             spaces.P();
         }
@@ -29,7 +29,7 @@ public class WaitingRoom {
             inptr = (inptr + 1) % capacity;
 
             if (patient != null)
-                System.out.println("Patient: " + patient + " entered the waiting room.");
+                System.out.println(patient + " entered the waiting room." + "\n");
 
         }
 
@@ -42,7 +42,7 @@ public class WaitingRoom {
                 value = store[outptr];
                 outptr = (outptr + 1) % capacity;
                 if ( value != null )
-                    System.out.println("Patient: " + value + " was removed from the waiting room.");
+                    System.out.println(value + " was removed from the waiting room.");
             }
             spaces.V();
             return value;
