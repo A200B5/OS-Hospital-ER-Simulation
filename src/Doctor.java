@@ -43,7 +43,7 @@ public class Doctor extends Thread {
 
                 // Simulate treatment for a random duration
                 try {
-                    int treatmentTime = 1000 + random.nextInt(3000);
+                    int treatmentTime = 5000 + random.nextInt(3000);
                     Thread.sleep(treatmentTime);
                 } catch (InterruptedException e) {
                     e.printStackTrace();

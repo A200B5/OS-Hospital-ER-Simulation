@@ -1,35 +1,52 @@
 public class Patient extends Thread {
 
+
     private int id;
     private WaitingRoom waitingRoom;
+
+    private Semaphore assignedByDoctor;
+    private Semaphore treatmentFinished;
 
     public Patient(int id, WaitingRoom waitingRoom) {
         this.id = id;
         this.waitingRoom = waitingRoom;
+
+        assignedByDoctor = new Semaphore(0);
+        treatmentFinished = new Semaphore(0);
     }
 
     @Override
-   public void run() {
-            System.out.println("P" + id + " arrived.");
-            waitingRoom.addPatient(this);
-            assignedByDoctor.acquire();
-            treatmentFinished.acquire();
-            System.out.println("P" + id + " left.");
-        }
-    
+    public void run() {
+        System.out.println("P" + id + " arrived.");
+
+        waitingRoom.produce(this);
+
+        assignedByDoctor.P();
+
+        treatmentFinished.P();
+
+        System.out.println("P" + id + " left.");
+    }
+
     public void assignToDoctor() {
-        assignedByDoctor.release();
+        assignedByDoctor.V();
     }
+
     public void completeTreatment() {
-        treatmentFinished.release();
+        treatmentFinished.V();
     }
+
     public void sendBackToWaitingRoom() {
-        waitingRoom.readdPatient(this);
+        waitingRoom.produce(this);
     }
+
     public int getPatientId() {
         return id;
     }
+
+    @Override
     public String toString() {
         return "P" + id;
     }
+
 }

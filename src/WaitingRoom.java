@@ -18,7 +18,8 @@ public class WaitingRoom {
     public void produce(Object patient) {
 
         if (!spaces.tryP(0)) {
-            System.out.println("Waiting room is full. Patient " + patient + " must wait outside");
+            if (patient != null)
+                System.out.println("Waiting room is full. Patient " + patient + " must wait outside");
 
             spaces.P();
         }
