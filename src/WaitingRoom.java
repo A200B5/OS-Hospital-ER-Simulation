@@ -19,7 +19,7 @@ public class WaitingRoom {
 
         if (!spaces.tryP(0)) {
             if (patient != null)
-                System.out.println("Waiting room is full.\n" + patient + "is waiting outside for an available seat.");
+                System.out.println("Waiting room is full.\n" + patient + " is waiting outside for an available seat.");
 
             spaces.P();
         }
